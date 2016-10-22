@@ -66,6 +66,10 @@ body {
 	font-weight: bold;
 }
 
+.over {
+	color: red;
+}
+
 /* PAGE STRUCTURE */
 #page-container {
 	padding: 54px 14px 15px;
@@ -137,6 +141,9 @@ body {
 				font-size: 14px;
 				color: #999;
 				text-shadow: 0 1px 1px rgba(255,255,255,.75);
+			}
+			#char-count.over {
+				color: red;
 			}
 
 /* TWEET */
@@ -258,5 +265,3 @@ body {
 				top: 0;
 				left: 0;
 			}
-
-
