@@ -5,14 +5,17 @@ $(document).ready(function(){
   $('.stats').hide();
   $('.reply').hide();
 
+  $('#tweet-submit').prop('disabled', true);
+
   $('#main-text-area').on('click', function () {
     $('#tweet-controls').fadeIn('fast', 'linear');
     $(this).height(65);
   });
 
   $('#tweet-submit').on('click', function(){
-    $('#stream').prepend($('#main-text-area'));
-
+    $('#stream').prepend($('#main-text-area').val());
+    $('#stream').prepend('<img class="avatar" src="img/alagoon.jpg" />', '<br>','<strong class="fullname">Cameron Skidmore</strong>', '<span class="username">       @cskidz99</span>', '<br>');
+    $('#main-text-area').val('');
   });
 
   // $('#main-text-area').on('focusout', function () {
@@ -46,25 +49,19 @@ $(document).ready(function(){
       var count = $('#char-count');
       var characters = $(this).val().length;
 
-
-
       if (characters > 129) {
           count.addClass('over');
       } else {
           count.removeClass('over');
       }
 
-      if (characters <= 140) {
-        $('#tweet-submit').prop('disabled', false);
-      } else {
+      if (characters > 140 || characters === 0) {
         $('#tweet-submit').prop('disabled', true);
+      } else {
+        $('#tweet-submit').prop('disabled', false);
       }
 
       count.text(maxCharacters - characters);
-
-      // $('#tweet-submit').on('click', function(){
-      //   count.text = 0;
-      // });
   });
 
   $('.tweet').hover(function(){
